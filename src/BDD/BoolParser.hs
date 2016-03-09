@@ -1,17 +1,10 @@
-module BoolParser where
+module BDD.BoolParser (parseBool) where
 
 import Prelude hiding (exp)
 import Text.Parsec
 import Text.Parsec.Char
 
-data BoolExp = 
-    And BoolExp BoolExp
-  | Or BoolExp BoolExp
-  | Neg BoolExp
-  | Imply BoolExp BoolExp
-  | Iff BoolExp BoolExp
-  | Literal String
-  deriving Show
+import BDD.Definition (BoolExp(..))
 
 parseBool :: String -> Either ParseError BoolExp
 parseBool = parse expression "<command line>"
