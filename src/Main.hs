@@ -1,8 +1,8 @@
 module Main where
 
-import BDD.Algorithm
-import BDD.BoolParser
-import BDD.GraphGenerator
+import BDDGen.Algorithm
+import BDDGen.BoolParser
+import BDDGen.GraphGenerator
 
 main = do
   s <- getContents 

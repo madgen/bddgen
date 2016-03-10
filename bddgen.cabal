@@ -2,7 +2,7 @@
 -- see http://haskell.org/cabal/users-guide/
 
 -- The name of the package.
-name:                BDD
+name:                bddgen
 
 -- The package version.  See the Haskell package versioning policy (PVP) 
 -- for standards guiding when and how versions should be incremented.
@@ -13,7 +13,7 @@ name:                BDD
 version:             0.1.0.0
 
 -- A short (one-line) description of the package.
-synopsis:            BDD visualiser
+synopsis:            Binary Decision Diagram (BDD) visualiser
 
 -- A longer description of the package.
 -- description:         
@@ -46,16 +46,16 @@ build-type:          Simple
 cabal-version:       >=1.10
 
 
-executable BDD
+executable bddgen
   -- .hs or .lhs file containing the Main module.
   main-is:             Main.hs
   
   -- Modules included in this executable, other than Main.
-  other-modules:       BDD.BoolParser
-                     , BDD.GraphGenerator
-                     , BDD.Algorithm
-                     , BDD.Definition
-                     , BDD.BoolParser
+  other-modules:       BDDGen.BoolParser
+                     , BDDGen.GraphGenerator
+                     , BDDGen.Algorithm
+                     , BDDGen.Definition
+                     , BDDGen.BoolParser
   
   -- LANGUAGE extensions used by modules in this package.
   -- other-extensions:    

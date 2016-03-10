@@ -1,8 +1,8 @@
-module BDD.Algorithm where
+module BDDGen.Algorithm where
 
 import Prelude hiding (negate)
 
-import BDD.Definition
+import BDDGen.Definition
 
 convert :: BoolExp -> BDD
 convert (Literal s) = Node (Leaf True) s (Leaf False)

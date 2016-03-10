@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module BDD.GraphGenerator (generateGraph) where
+module BDDGen.GraphGenerator (generateGraph) where
 
 import qualified Data.Text.Lazy as T
 
@@ -15,7 +15,7 @@ import Data.GraphViz.Attributes.Complete ( Attribute(..)
 
 import Data.List (group, sort)
 
-import BDD.Definition (BDD(..))
+import BDDGen.Definition (BDD(..))
 
 type Name = T.Text
 

@@ -1,4 +1,4 @@
-module BDD.Definition where
+module BDDGen.Definition where
 
 data BoolExp = 
     And BoolExp BoolExp
