@@ -25,13 +25,25 @@ expHigh = try (do
   <|> exp
 
 exp :: Parsec String () BoolExp
-exp = spaces *> (try (do
+exp = spaces *> do
     f <- factor
-    spaces
+    e' <- exp' 
+    case e' of
+      [ ] -> return f
+      fs -> return $ toImps (f:fs)
+
+toImps :: [ BoolExp ] -> BoolExp
+toImps [ ] = error "should not happen"
+toImps [ x ] = x
+toImps (x:y:rest) = toImps (Imply x y:rest)
+
+exp' :: Parsec String () [BoolExp]
+exp' = spaces *> (try (do
     string "->"
-    e <- exp
-    return $ Imply f e)
-  <|> factor)
+    f <- factor
+    fs <- exp'
+    return $ f:fs)
+  <|> return [ ])
 
 factor :: Parsec String () BoolExp
 factor = spaces *> (try (do
