@@ -8,4 +8,4 @@ main = do
   s <- getContents 
   case parseBool s of
     Left e -> error $ show e
-    Right b -> putStrLn . generateGraph . convert $ b
+    Right b -> putStrLn . generateGraph s . convert $ b

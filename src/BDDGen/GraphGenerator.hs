@@ -11,6 +11,7 @@ import Data.GraphViz.Attributes.Complete ( Attribute(..)
                                          , StyleItem(..)
                                          , StyleName(..) 
                                          , Label(..)
+                                         , VerticalPlacement(..)
                                          , Shape(..) )
 
 import Data.List (group, sort)
@@ -39,8 +40,9 @@ nodesAndEdges n@(Node b1 s b2 idd) =
   where
     label bdd = case bdd of { Leaf b -> show b; Node _ s _ _ -> s }
 
-toGraph :: Graph -> DotGraph T.Text
-toGraph (nodes, edges) = digraph (Str "BDD") $ do
+toGraph :: String -> Graph -> DotGraph T.Text
+toGraph title (nodes, edges) = digraph (Str "BDD") $ do
+    graphAttrs [ LabelLoc VTop, Label $ StrLabel $ T.pack title ] 
     mapM_ nodeGen uniqNodes 
     mapM_ edgeGen uniqEdges
   where
@@ -53,5 +55,5 @@ toGraph (nodes, edges) = digraph (Str "BDD") $ do
       | n == "-" = node "-" [ Label $ StrLabel $ T.pack "0", Shape Square ]
       | otherwise = node n [ Label l ] 
 
-generateGraph :: BDD -> String
-generateGraph = T.unpack . renderDot . toDot . toGraph . nodesAndEdges
+generateGraph :: String -> BDD -> String
+generateGraph title = T.unpack . renderDot . toDot . toGraph title . nodesAndEdges
